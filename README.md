@@ -56,6 +56,7 @@ In this exercise you will:
 #### Reflection Questions
 
 1. **What does `typedef struct { ... } Point;` achieve compared to `struct Point { ... };`?**
+    Mit typedef struct wird einem bestehendem Datentypen ein Name gegeben. Hier muss man in diesem fall nur noch "Point p" schreiben. Mit struct Point ist dies nicht so. Hier ist der Befehl länger.
 2. **How does the compiler lay out a `Point` in memory?**
 
 ---
@@ -74,7 +75,10 @@ In this exercise you will:
 #### Reflection Questions
 
 1. **Why is the `-lm` flag necessary to resolve `sqrt`?**
+    Durch -lm wird dem Linker gesagt, dass er die Mathematikbibliothek einbinden soll.
 2. **What happens if you omit `-lm` when calling math functions?**
+    Wird -lm beim compilieren ausgelassen, wird nicht compiliert.
+  
 
 ---
 
@@ -105,7 +109,10 @@ In this exercise you will:
 #### Reflection Questions
 
 1. **What are the advantages and drawbacks of a header-only library?**
+    Vorteil: Der Code kann sehr einfach kompiliert werden.
+    Nachteil: Der Code wird so oft kompiliert, wie er benötigt wird.
 2. **How does `static inline` affect linkage and code size?**
+     Durch static inline wird der Code größer und braucht länger zum laden. Bei einem kleinem code wie in task 2 fällt dies aber nicht auf.
 
 ---
 
@@ -129,6 +136,7 @@ In this exercise you will:
 #### Reflection Questions
 
 1. **Why must you include `solutions/util.o` when linking instead of just the header?**
+    Beim linken muss util.o hinzugefügt werden, da ansonsten das Programm nur weiß, dass es eine Funktion "clamp" gibt, was diese aber beinhaltet nicht. Was in der Funktion abgebildet ist, befindet sich in util.o.
 2. **What symbol resolution occurs at compile vs. link time?**
 
 ---
@@ -160,7 +168,9 @@ In this exercise you will:
 #### Reflection Questions
 
 1. **How does `ar` create an archive, and how does the linker find `-lutil`?**
+    Durch "ar" wird ein Archiv erstellt, dieses bündelt mehrere Objektdateien zu einer Bibliothek. Der Linker sucht el -lutil nach einer Datei libutil.a in den Standardverzeichnissen.
 2. **What is the purpose of `ldconfig`?**
+    Mit ldconfig wird der Library Cache gewartet und es werden automatisch die notwendigen Links zu den Librarys erstellt.
 
 ---
 
@@ -197,7 +207,9 @@ In this exercise you will:
 #### Reflection Questions
 
 1. **What files does `libjansson-dev` install, and where?**
+     /. /usr /usr/includeperation, 145 kB disk space will be freed. /usr/include/jansson.he? [Y/n] y /usr/include/jansson_config.h /usr/lib /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/libjansson.a /usr/lib/x86_64-linux-gnu/pkgconfig /usr/lib/x86_64-linux-gnu/pkgconfig/jansson.pc /usr/share /usr/share/doc /usr/share/doc/libjansson-dev /usr/share/doc/libjansson-dev/copyright /usr/lib/x86_64-linux-gnu/libjansson.so /usr/share/doc/libjansson-dev/changelog.Debian.gz
 2. **How does the linker know where to find `-ljansson`?**
+     Der Linker weiß, wo er -ljansson finden kann, durch das -l. -l sagt ihm nämlich, dass es eine "library" ist.
 
 ---
 
